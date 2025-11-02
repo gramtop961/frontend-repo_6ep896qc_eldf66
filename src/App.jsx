@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Github, Linkedin } from 'lucide-react';
 
-// Code-split heavy sections to improve first paint
+// Lazy-load sections for a lighter first paint
 const Hero = lazy(() => import('./components/Hero'));
 const About = lazy(() => import('./components/About'));
 const Projects = lazy(() => import('./components/Projects'));
@@ -14,19 +14,19 @@ function Skeleton({ className = '' }) {
 function App() {
   return (
     <div className="relative min-h-screen w-full bg-black text-white">
-      {/* Global ambient gradient (very light for performance) */}
+      {/* Clean, subtle background wash (no grain/noise) */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-56 w-[28rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500/15 via-violet-500/15 to-cyan-500/15 blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(15,15,20,0)_0%,rgba(99,102,241,0.10)_20%,rgba(34,211,238,0.10)_60%,rgba(0,0,0,0)_100%)]" />
       </div>
 
       {/* Navbar */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
           <a href="#home" className="text-sm font-semibold tracking-wide text-white/90">Aly Soffar</a>
           <nav className="hidden gap-6 text-sm text-white/70 md:flex">
-            <a href="#about" className="relative hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gradient-to-r after:from-indigo-400 after:via-violet-400 after:to-cyan-400 after:transition-[width] hover:after:w-full">About</a>
-            <a href="#projects" className="relative hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gradient-to-r after:from-indigo-400 after:via-violet-400 after:to-cyan-400 after:transition-[width] hover:after:w-full">Projects</a>
-            <a href="#experience" className="relative hover:text-white after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gradient-to-r after:from-indigo-400 after:via-violet-400 after:to-cyan-400 after:transition-[width] hover:after:w-full">Experience</a>
+            <a href="#about" className="hover:text-white">About</a>
+            <a href="#projects" className="hover:text-white">Projects</a>
+            <a href="#experience" className="hover:text-white">Experience</a>
           </nav>
           <div className="flex items-center gap-3">
             <a href="https://github.com/Alysoffar" target="_blank" rel="noreferrer" className="rounded-lg border border-white/10 bg-white/5 p-2 hover:bg-white/10">
@@ -54,9 +54,9 @@ function App() {
         </Suspense>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/60 py-10">
+      <footer className="border-t border-white/10 bg-black/70 py-10">
         <div className="mx-auto max-w-6xl px-6 text-center text-sm text-white/60">
-          © {new Date().getFullYear()} Aly Soffar • Built with React • Futuristic, omniscient‑inspired aesthetic
+          © {new Date().getFullYear()} Aly Soffar
         </div>
       </footer>
     </div>

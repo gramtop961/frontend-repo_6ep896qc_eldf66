@@ -76,10 +76,8 @@ const Projects = () => {
 
   return (
     <section id="projects" className="relative w-full bg-black py-24 text-white">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.08),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(34,211,238,0.06),transparent_60%)]" />
-      </div>
+      {/* Minimal background for clarity */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[linear-gradient(180deg,rgba(168,85,247,0.10),rgba(0,0,0,0))]" />
       <div ref={ref} className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 16 }}

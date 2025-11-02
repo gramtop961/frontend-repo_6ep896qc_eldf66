@@ -13,7 +13,11 @@ const About = () => {
   const shouldReduceMotion = useReducedMotion();
   return (
     <section id="about" className="relative w-full bg-black py-20 text-white md:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.08),transparent_65%)]" />
+      {/* Simplified background to avoid dotty noise */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-x-0 top-0 h-48 bg-[linear-gradient(180deg,rgba(99,102,241,0.10),rgba(0,0,0,0))]" />
+      </div>
+
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
@@ -29,7 +33,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: shouldReduceMotion ? 0 : 0.05 }}
-          className="mt-4 max-w-3xl text-white/80"
+          className="mt-4 max-w-3xl text-white/85"
         >
           CS undergraduate ranked top 3/300+ (GPA 3.95). I specialize in AI, Machine Learning, Robotics, and Full‑Stack development. I’ve built production APIs with Django & PostgreSQL, designed RAG/agent systems, and led robotics programs and developer communities.
         </motion.p>
@@ -63,7 +67,7 @@ const About = () => {
             className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
           >
             <h3 className="mb-2 text-xl font-semibold">Education & Leadership</h3>
-            <p className="text-white/80">
+            <p className="text-white/85">
               Tech Lead at GDG AAST; active in IEEE AAST. I mentor builders, organize hackathons, and teach practical AI & robotics to drive impact.
             </p>
             <div className="mt-4 h-2 w-full rounded-full bg-white/10">
@@ -78,7 +82,7 @@ const About = () => {
             className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
           >
             <h3 className="mb-2 text-xl font-semibold">Notable Achievements</h3>
-            <p className="text-white/80">
+            <p className="text-white/85">
               Led AI & robotics programs for national competitors (UAE MoE & AAST RIC). Built high‑impact backends at Arkleap with measurable performance gains.
             </p>
             <div className="mt-4 flex items-center gap-3 text-amber-200">

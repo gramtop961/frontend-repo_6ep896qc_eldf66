@@ -45,10 +45,8 @@ const Experience = () => {
   const shouldReduceMotion = useReducedMotion();
   return (
     <section id="experience" className="relative w-full bg-black py-20 text-white md:py-24">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.08),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.06),transparent_60%)]" />
-      </div>
+      {/* Clear backdrop to keep content crisp */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-[linear-gradient(180deg,rgba(34,211,238,0.10),rgba(0,0,0,0))]" />
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
@@ -59,7 +57,7 @@ const Experience = () => {
         >
           Experience & Achievements
         </motion.h2>
-        <p className="mt-3 max-w-2xl text-white/70">
+        <p className="mt-3 max-w-2xl text-white/75">
           Teaching, building, and leading at the intersection of AI, robotics, and software engineering.
         </p>
 
@@ -83,7 +81,7 @@ const Experience = () => {
                     </div>
                     <Briefcase className="text-purple-300" size={20} />
                   </div>
-                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/75">
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-white/78">
                     {item.points.map((p, i) => (
                       <li key={i}>{p}</li>
                     ))}
@@ -146,7 +144,7 @@ const Experience = () => {
                 <GraduationCap className="text-cyan-200" />
                 <h3 className="text-xl font-semibold">Education</h3>
               </div>
-              <p className="mt-3 text-white/80">
+              <p className="mt-3 text-white/85">
                 B.Sc. in Computer Science — Top 3 of 300+ peers. GPA 3.95/4.0.
               </p>
             </motion.div>
@@ -159,7 +157,7 @@ const Experience = () => {
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
               <h3 className="text-xl font-semibold">Let’s collaborate</h3>
-              <p className="mt-2 text-white/80">
+              <p className="mt-2 text-white/85">
                 Interested in AI/ML, robotics, or backend engineering projects? Reach out — I’d love to help build.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
