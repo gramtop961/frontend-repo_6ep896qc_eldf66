@@ -12,14 +12,14 @@ const skills = [
 const About = () => {
   return (
     <section id="about" className="relative w-full bg-black py-24 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/5 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/10 to-transparent" />
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
+          className="bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
         >
           About Aly
         </motion.h2>
@@ -44,7 +44,7 @@ const About = () => {
               className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur hover:bg-white/10"
             >
               <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-gradient-to-br from-cyan-500/30 to-purple-600/30 p-2">
+                <div className="rounded-lg bg-gradient-to-br from-indigo-500/30 via-violet-500/30 to-cyan-500/30 p-2">
                   <Icon className="text-cyan-300" size={22} />
                 </div>
                 <span className="text-sm font-medium">{label}</span>
@@ -66,7 +66,7 @@ const About = () => {
               Tech Lead at GDG AAST; active in IEEE AAST. I mentor builders, organize hackathons, and teach practical AI & robotics to drive impact.
             </p>
             <div className="mt-4 h-2 w-full rounded-full bg-white/10">
-              <div className="h-2 w-5/6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500" />
+              <div className="h-2 w-5/6 rounded-full bg-gradient-to-r from-indigo-400 via-violet-500 to-cyan-400" />
             </div>
           </motion.div>
           <motion.div

@@ -44,14 +44,17 @@ const timeline = [
 const Experience = () => {
   return (
     <section id="experience" className="relative w-full bg-black py-24 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.08),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.10),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.07),transparent_60%)]" />
+      </div>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
+          className="bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
         >
           Experience & Achievements
         </motion.h2>
@@ -107,7 +110,7 @@ const Experience = () => {
                     <span>+25%</span>
                   </div>
                   <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-amber-300 to-purple-400" />
+                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-amber-300 via-violet-400 to-cyan-400" />
                   </div>
                 </div>
                 <div>
@@ -116,7 +119,7 @@ const Experience = () => {
                     <span>+25%</span>
                   </div>
                   <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-cyan-300 to-purple-400" />
+                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-indigo-300 via-violet-400 to-cyan-400" />
                   </div>
                 </div>
                 <div>
@@ -125,7 +128,7 @@ const Experience = () => {
                     <span>+15%</span>
                   </div>
                   <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-1/2 rounded-full bg-gradient-to-r from-cyan-300 to-amber-300" />
+                    <div className="h-2 w-1/2 rounded-full bg-gradient-to-r from-indigo-300 via-cyan-300 to-amber-300" />
                   </div>
                 </div>
               </div>
@@ -161,7 +164,7 @@ const Experience = () => {
               <div className="mt-4 flex flex-wrap gap-3">
                 <a
                   href="mailto:alysoffar06@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 px-4 py-2 text-sm font-semibold text-white"
+                  className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 px-4 py-2 text-sm font-semibold text-white"
                 >
                   <Mail size={16} /> Email Aly
                 </a>
