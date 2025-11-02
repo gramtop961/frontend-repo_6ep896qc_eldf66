@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Briefcase, GraduationCap, Mail, Download } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const timeline = [
   {
@@ -42,18 +42,19 @@ const timeline = [
 ];
 
 const Experience = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
-    <section id="experience" className="relative w-full bg-black py-24 text-white">
+    <section id="experience" className="relative w-full bg-black py-20 text-white md:py-24">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.10),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.07),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(168,85,247,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(34,211,238,0.06),transparent_60%)]" />
       </div>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.45 }}
           className="bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
         >
           Experience & Achievements
@@ -68,10 +69,10 @@ const Experience = () => {
               {timeline.map((item, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -16 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : idx * 0.04 }}
                   className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur"
                 >
                   <div className="flex items-start justify-between">
@@ -93,10 +94,10 @@ const Experience = () => {
           </div>
           <div className="flex flex-col gap-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.4 }}
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
               <div className="flex items-center gap-3">
@@ -135,10 +136,10 @@ const Experience = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.06 }}
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
               <div className="flex items-center gap-3">
@@ -151,10 +152,10 @@ const Experience = () => {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.4, delay: shouldReduceMotion ? 0 : 0.1 }}
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
               <h3 className="text-xl font-semibold">Let’s collaborate</h3>

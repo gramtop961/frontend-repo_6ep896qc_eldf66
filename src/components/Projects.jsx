@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Star, GitFork, Eye, ExternalLink } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
 const username = 'Alysoffar';
 
@@ -10,10 +10,10 @@ const ProjectCard = ({ repo }) => {
       href={repo.html_url}
       target="_blank"
       rel="noreferrer"
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.45 }}
       className="group flex flex-col rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition hover:-translate-y-1 hover:bg-white/10"
     >
       <div className="flex items-start justify-between">
@@ -44,44 +44,48 @@ const ProjectCard = ({ repo }) => {
 };
 
 const Projects = () => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { amount: 0.2, once: true });
   const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
+    if (!inView) return;
     const controller = new AbortController();
     const load = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=8&sort=updated`, {
+        setError('');
+        const res = await fetch(`https://api.github.com/users/${username}/repos?per_page=12&sort=updated`, {
           signal: controller.signal,
         });
         if (!res.ok) throw new Error('Failed to fetch repositories');
         const data = await res.json();
-        const filtered = data.filter(r => !r.fork).slice(0, 8);
+        const filtered = data.filter((r) => !r.fork).slice(0, 6);
         setRepos(filtered);
       } catch (e) {
-        if (e.name !== 'AbortError') setError('Unable to load GitHub projects at the moment.');
+        if (e.name !== 'AbortError') setError('Unable to load GitHub projects right now.');
       } finally {
         setLoading(false);
       }
     };
     load();
     return () => controller.abort();
-  }, []);
+  }, [inView]);
 
   return (
     <section id="projects" className="relative w-full bg-black py-24 text-white">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.10),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(34,211,238,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(34,211,238,0.06),transparent_60%)]" />
       </div>
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div ref={ref} className="relative mx-auto max-w-6xl px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.45 }}
           className="bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
         >
           Featured Projects
@@ -91,7 +95,11 @@ const Projects = () => {
         </p>
 
         {loading && (
-          <div className="mt-10 text-white/70">Loading repositories...</div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="h-40 animate-pulse rounded-2xl border border-white/10 bg-white/5" />
+            ))}
+          </div>
         )}
         {error && (
           <div className="mt-10 text-red-300">{error}</div>
@@ -99,7 +107,7 @@ const Projects = () => {
 
         {!loading && !error && (
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {repos.map(repo => (
+            {repos.map((repo) => (
               <ProjectCard key={repo.id} repo={repo} />
             ))}
           </div>

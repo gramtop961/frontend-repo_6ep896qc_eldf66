@@ -1,16 +1,22 @@
-import React from 'react';
-import Hero from './components/Hero';
-import About from './components/About';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
+import React, { Suspense, lazy } from 'react';
 import { Github, Linkedin } from 'lucide-react';
+
+// Code-split heavy sections to improve first paint
+const Hero = lazy(() => import('./components/Hero'));
+const About = lazy(() => import('./components/About'));
+const Projects = lazy(() => import('./components/Projects'));
+const Experience = lazy(() => import('./components/Experience'));
+
+function Skeleton({ className = '' }) {
+  return <div className={`animate-pulse rounded-2xl bg-white/5 ${className}`} />;
+}
 
 function App() {
   return (
     <div className="relative min-h-screen w-full bg-black text-white">
-      {/* Global ambient gradients */}
+      {/* Global ambient gradient (very light for performance) */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-24 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500/20 via-violet-500/20 to-cyan-500/20 blur-3xl" />
+        <div className="absolute -top-24 left-1/2 h-56 w-[28rem] -translate-x-1/2 rounded-full bg-gradient-to-r from-indigo-500/15 via-violet-500/15 to-cyan-500/15 blur-3xl" />
       </div>
 
       {/* Navbar */}
@@ -34,10 +40,18 @@ function App() {
       </header>
 
       <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Experience />
+        <Suspense fallback={<Skeleton className="m-6 h-[60vh]" />}> 
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="mx-6 my-12 h-80" />}> 
+          <About />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="mx-6 my-12 h-[28rem]" />}> 
+          <Projects />
+        </Suspense>
+        <Suspense fallback={<Skeleton className="mx-6 my-12 h-[28rem]" />}> 
+          <Experience />
+        </Suspense>
       </main>
 
       <footer className="border-t border-white/10 bg-black/60 py-10">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Brain, Cpu, Bot, Code, Award } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const skills = [
   { icon: Brain, label: 'AI/ML' },
@@ -10,37 +10,38 @@ const skills = [
 ];
 
 const About = () => {
+  const shouldReduceMotion = useReducedMotion();
   return (
-    <section id="about" className="relative w-full bg-black py-24 text-white">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-violet-500/10 to-transparent" />
+    <section id="about" className="relative w-full bg-black py-20 text-white md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(168,85,247,0.08),transparent_65%)]" />
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.45 }}
           className="bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-3xl font-bold text-transparent md:text-4xl"
         >
           About Aly
         </motion.h2>
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: shouldReduceMotion ? 0 : 0.05 }}
           className="mt-4 max-w-3xl text-white/80"
         >
           CS undergraduate ranked top 3/300+ (GPA 3.95). I specialize in AI, Machine Learning, Robotics, and Full‑Stack development. I’ve built production APIs with Django & PostgreSQL, designed RAG/agent systems, and led robotics programs and developer communities.
         </motion.p>
 
-        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-4 md:mt-10 md:grid-cols-4">
           {skills.map(({ icon: Icon, label }, idx) => (
             <motion.div
               key={label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.35, delay: shouldReduceMotion ? 0 : idx * 0.04 }}
               className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur hover:bg-white/10"
             >
               <div className="flex items-center gap-3">
@@ -53,12 +54,12 @@ const About = () => {
           ))}
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.45 }}
             className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
           >
             <h3 className="mb-2 text-xl font-semibold">Education & Leadership</h3>
@@ -70,10 +71,10 @@ const About = () => {
             </div>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.45, delay: shouldReduceMotion ? 0 : 0.05 }}
             className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
           >
             <h3 className="mb-2 text-xl font-semibold">Notable Achievements</h3>
