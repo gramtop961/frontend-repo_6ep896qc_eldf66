@@ -41,19 +41,19 @@ const Hero = () => {
       <div className="absolute inset-0">
         {visible && readyToMount ? (
           <Spline
-            scene="https://prod.spline.design/wwTRdG1D9CkNs368/scene.splinecode"
+            scene="https://prod.spline.design/EF7JOSsHLk16Tlw9/scene.splinecode"
             style={{ width: '100%', height: '100%' }}
           />
         ) : (
           // Clean fallback, no dots/noise
-          <div className="h-full w-full bg-[radial-gradient(ellipse_at_50%_40%,rgba(99,102,241,0.12),transparent_60%)]" />
+          <div className="h-full w-full bg-[radial-gradient(ellipse_at_50%_40%,rgba(139,92,246,0.14),transparent_60%)]" />
         )}
       </div>
 
-      {/* Subtle corner glow without blend modes (prevents TV-like noise) */}
+      {/* Subtle ORV-inspired corner glows without blend modes */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute right-[-10%] top-[-10%] h-72 w-72 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle at center, rgba(99,102,241,0.16), rgba(0,0,0,0))' }} />
-        <div className="absolute bottom-[-8%] left-[-6%] h-72 w-72 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle at center, rgba(34,211,238,0.14), rgba(0,0,0,0))' }} />
+        <div className="absolute right-[-10%] top-[-12%] h-72 w-72 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle at center, rgba(168,85,247,0.18), rgba(0,0,0,0))' }} />
+        <div className="absolute bottom-[-10%] left-[-8%] h-72 w-72 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle at center, rgba(34,211,238,0.16), rgba(0,0,0,0))' }} />
       </div>
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center px-6 pt-28 text-center md:pt-36">
@@ -63,17 +63,16 @@ const Hero = () => {
           transition={{ duration: shouldReduceMotion ? 0 : 0.45 }}
           className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs uppercase tracking-widest backdrop-blur"
         >
-          <Rocket size={14} className="text-cyan-300" />
-          Building AI-first experiences
+          <Rocket size={14} className="text-cyan-300" /> From Cairo to the Cosmos
         </motion.span>
 
         <motion.h1
           initial={shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.02 }}
-          className="mt-6 bg-gradient-to-r from-indigo-200 via-violet-300 to-cyan-200 bg-clip-text text-4xl font-extrabold leading-tight text-transparent md:text-6xl"
+          className="mt-6 bg-gradient-to-r from-indigo-200 via-fuchsia-300 to-cyan-200 bg-clip-text text-4xl font-extrabold leading-tight text-transparent md:text-6xl"
         >
-          Aly Soffar
+          Hello, I’m Aly Soffar
         </motion.h1>
 
         <motion.p
@@ -82,7 +81,8 @@ const Hero = () => {
           transition={{ duration: shouldReduceMotion ? 0 : 0.5, delay: shouldReduceMotion ? 0 : 0.06 }}
           className="mt-4 max-w-2xl text-base text-white/85 md:text-lg"
         >
-          Computer Science undergraduate (GPA 3.95) specializing in AI/ML, Robotics, and Full‑Stack Development. I craft performant backends, intelligent agents, and delightful developer experiences.
+          AI & Software Developer crafting intelligent systems that bridge code, data, and creativity. 
+          I build ML agents, robotics pipelines, and high‑performance backends.
         </motion.p>
 
         <motion.div
@@ -95,7 +95,7 @@ const Hero = () => {
             href="#projects"
             className="group rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-cyan-500 px-5 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(99,102,241,0.28)] transition-transform will-change-transform hover:scale-[1.02]"
           >
-            Explore Projects
+            Explore My Work
           </a>
           <a
             href="https://github.com/Alysoffar"

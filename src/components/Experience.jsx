@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Briefcase, GraduationCap, Mail, Download } from 'lucide-react';
+import { Award, Briefcase, GraduationCap, Mail, Download, Medal } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 
 const timeline = [
@@ -27,7 +27,7 @@ const timeline = [
     time: 'Feb 2024 – Present',
     points: [
       'Built data-driven teaching framework for robotics & AI',
-      '+25% comprehension, +15% engagement',
+      '+15% engagement across cohorts',
     ],
   },
   {
@@ -35,10 +35,27 @@ const timeline = [
     org: 'GDG AAST',
     time: 'Oct 2024 – Present',
     points: [
-      'Led student developers, workshops, and hackathons',
-      'Boosted local collaboration and learning culture',
+      'Led tech events, workshops, and hackathons in AI & Cloud',
+      'Mentored student teams and open-source initiatives',
     ],
   },
+  {
+    role: 'Volunteer',
+    org: 'IEEE AAST Student Branch',
+    time: 'Jan 2024 – Present',
+    points: [
+      'Organized robotics and embedded systems events',
+      'Supported community outreach and competitions',
+    ],
+  },
+];
+
+const achievements = [
+  '1st Place — VEX Robotics Competition',
+  '2nd Place — RoboCup Jr Egypt (@Home)',
+  '3× Top 10 National Finalist — RoboCup Jr (Cospace)',
+  'Top 20% — ECPC & EOI',
+  'Winner — Plan International Startup Challenge (50K EGP)',
 ];
 
 const Experience = () => {
@@ -58,7 +75,7 @@ const Experience = () => {
           Experience & Achievements
         </motion.h2>
         <p className="mt-3 max-w-2xl text-white/75">
-          Teaching, building, and leading at the intersection of AI, robotics, and software engineering.
+          A journey across AI, robotics, and backend engineering — teaching, building, and leading.
         </p>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -99,38 +116,14 @@ const Experience = () => {
               className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur"
             >
               <div className="flex items-center gap-3">
-                <Award className="text-amber-200" />
-                <h3 className="text-xl font-semibold">Achievements Snapshot</h3>
+                <Medal className="text-amber-200" />
+                <h3 className="text-xl font-semibold">Achievements</h3>
               </div>
-              <div className="mt-4 space-y-4">
-                <div>
-                  <div className="flex justify-between text-sm text-white/70">
-                    <span>Backend Performance Improvements</span>
-                    <span>+25%</span>
-                  </div>
-                  <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-amber-300 via-violet-400 to-cyan-400" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm text-white/70">
-                    <span>Students' Competitive Performance</span>
-                    <span>+25%</span>
-                  </div>
-                  <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-indigo-300 via-violet-400 to-cyan-400" />
-                  </div>
-                </div>
-                <div>
-                  <div className="flex justify-between text-sm text-white/70">
-                    <span>Engagement in Courses</span>
-                    <span>+15%</span>
-                  </div>
-                  <div className="mt-2 h-2 rounded-full bg-white/10">
-                    <div className="h-2 w-1/2 rounded-full bg-gradient-to-r from-indigo-300 via-cyan-300 to-amber-300" />
-                  </div>
-                </div>
-              </div>
+              <ul className="mt-4 space-y-2 text-sm text-white/85">
+                {achievements.map((a) => (
+                  <li key={a} className="rounded-lg border border-white/10 bg-black/30 px-3 py-2">{a}</li>
+                ))}
+              </ul>
             </motion.div>
 
             <motion.div
@@ -167,11 +160,9 @@ const Experience = () => {
                 >
                   <Mail size={16} /> Email Aly
                 </a>
-                <a
-                  href="#"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const resume = `Aly Soffar\nCS Undergraduate (GPA 3.95)\n\nExperience\n- Backend Intern — Arkleap (Jul 2024 – Sep 2024): Django, PostgreSQL; +25% performance\n- AI & Robotics Instructor — UAE MoE & AAST RIC (Jun 2025 – Jul 2025)\n- Course Instructor — ZHub (Feb 2024 – Present)\n- Tech Lead — GDG AAST (Oct 2024 – Present)\n\nProjects\n- GitClone Dashboard (PHP, MySQL, GitHub API)\n- LangGraph Learning Guide (Python, Agents, RAG)\n\nSkills\nPython, Django, REST, PostgreSQL, MySQL, AWS, ROS, CV, NLP, Agents`;
+                <button
+                  onClick={() => {
+                    const resume = `Aly Soffar\nCS Undergraduate (GPA 3.95)\n\nExperience\n- Backend Intern — Arkleap (Jul 2024 – Sep 2024): Django, PostgreSQL; +25% performance\n- AI & Robotics Instructor — UAE MoE & AAST RIC (Jun 2025 – Jul 2025)\n- Course Instructor — ZHub (Feb 2024 – Present)\n- Tech Lead — GDG AAST (Oct 2024 – Present)\n- Volunteer — IEEE AAST Student Branch (Jan 2024 – Present)\n\nProjects\n- GitClone Dashboard (PHP, MySQL, GitHub API)\n- LangGraph Learning Guide (Python, Agents, RAG)`;
                     const blob = new Blob([resume], { type: 'text/plain;charset=utf-8' });
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
@@ -185,7 +176,7 @@ const Experience = () => {
                   className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/90 backdrop-blur hover:bg-white/10"
                 >
                   <Download size={16} /> Download Resume
-                </a>
+                </button>
               </div>
             </motion.div>
           </div>
